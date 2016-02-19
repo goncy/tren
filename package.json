@@ -1,7 +1,7 @@
 {
-  "name": "tren",
-  "version": "1.1.1",
-  "description": "tren: An Ionic project",
+  "name": "consultren",
+  "version": "0.1",
+  "description": "Consultren: Consulta de horarios de Trenes Argentinos",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

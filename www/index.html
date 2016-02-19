@@ -21,7 +21,7 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
   </head>
-  <body ng-app="starter">
+  <body ng-app="ConsulTren">
 
     <ion-nav-bar class="bar-positive">
       <ion-nav-back-button>
@@ -65,7 +65,10 @@
 
     <script id="templates/facts.html" type="text/ng-template">
       <ion-view view-title="Lineas">
-        <ion-content class="padding">
+        <div class="bar bar-stable bar-subheader">
+          <h2 class="title">Ramal</h2>
+        </div>
+        <ion-content class="padding has-subheader">
           <ul>
             <li>Linea 1</li>
             <li>Linea 2</li>
@@ -79,7 +82,10 @@
 
     <script id="templates/facts2.html" type="text/ng-template">
       <ion-view view-title="Estaciones">
-        <ion-content class="padding">
+        <div class="bar bar-stable bar-subheader">
+          <h2 class="title">Linea</h2>
+        </div>
+        <ion-content class="padding has-subheader">
           <ul>
             <li>Estacion 1</li>
             <li>Estacion 2</li>
@@ -93,7 +99,10 @@
 
     <script id="templates/facts3.html" type="text/ng-template">
       <ion-view view-title="Sentido">
-        <ion-content class="padding">
+        <div class="bar bar-stable bar-subheader">
+          <h2 class="title">Estacion</h2>
+        </div>
+        <ion-content class="padding has-subheader">
           <ul>
             <li>Ida</li>
             <li>Vuelta</li>
@@ -107,7 +116,10 @@
 
     <script id="templates/facts4.html" type="text/ng-template">
       <ion-view view-title="Horarios">
-        <ion-content class="padding">
+        <div class="bar bar-stable bar-subheader">
+          <h2 class="title">Estacion > Sentido</h2>
+        </div>
+        <ion-content class="padding has-subheader">
           <ul>
             <li>Primer horario</li>
             <li>Segundo horario</li>
