@@ -1,6 +1,6 @@
 {
   "name": "consultren",
-  "version": "0.1",
+  "version": "v0.0.1",
   "description": "Consultren: Consulta de horarios de Trenes Argentinos",
   "dependencies": {
     "gulp": "^3.5.6",

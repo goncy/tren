@@ -25,8 +25,10 @@ angular.module('ConsulTren', ['ionic'])
 
 .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-  $ionicConfigProvider.tabs.position('bottom');
   $ionicConfigProvider.navBar.alignTitle('center');
+  $ionicConfigProvider.backButton.previousTitleText(false);
+  $ionicConfigProvider.backButton.icon('ion-chevron-left');
+  $ionicConfigProvider.backButton.text('');
 
   $stateProvider
     .state('tabs', {
@@ -38,8 +40,7 @@ angular.module('ConsulTren', ['ionic'])
       url: "/home",
       views: {
         'home-tab': {
-          templateUrl: "templates/home.html",
-          controller: 'HomeTabCtrl'
+          templateUrl: "templates/home.html"
         }
       }
     })
@@ -79,7 +80,8 @@ angular.module('ConsulTren', ['ionic'])
       url: "/about",
       views: {
         'about-tab': {
-          templateUrl: "templates/about.html"
+          templateUrl: "templates/about.html",
+          controller: "FavoritosTabCtrl"
         }
       }
     })
@@ -105,6 +107,14 @@ angular.module('ConsulTren', ['ionic'])
 
 })
 
-.controller('HomeTabCtrl', function ($scope) {
-  console.log('HomeTabCtrl');
+.controller('FavoritosTabCtrl', function ($scope) {
+  $scope.ramales = ['Mitre', 'San Martin', 'Urquiza', 'Roca'];
+
+  $scope.behaviours = {
+    showDelete: false
+  };
+
+  $scope.deleteFavorite = function(item) {
+    $scope.ramales.splice($scope.ramales.indexOf(item), 1);
+  };
 });

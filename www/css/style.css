@@ -7,3 +7,12 @@
 .sub-footer{
 bottom:49px !important;
 }*/
+
+.assertive.hovered:hover {
+  opacity: 0.4;
+  color: crimson !important;
+}
+
+/*.item-button-right {
+  padding-right: 0px
+}*/

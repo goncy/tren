@@ -23,23 +23,23 @@
   </head>
   <body ng-app="ConsulTren">
 
-    <ion-nav-bar class="bar-positive">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-    </ion-nav-bar>
-
     <ion-nav-view></ion-nav-view>
 
 
     <script id="templates/tabs.html" type="text/ng-template">
-      <ion-tabs class="tabs-icon-top tabs-positive">
+      <ion-nav-bar class="bar-positive">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+      </ion-nav-bar>
 
-        <ion-tab title="Favoritos" icon="ion-ios-star" href="#/tab/home">
-          <ion-nav-view name="home-tab"></ion-nav-view>
+      <ion-tabs class="tabs-striped tabs-background-positive tabs-color-light">
+
+        <ion-tab title="Favoritos" icon="ion-ios-star" href="#/tab/about">
+          <ion-nav-view name="about-tab"></ion-nav-view>
         </ion-tab>
 
-        <ion-tab title="Inicio" icon="ion-ios-home" href="#/tab/about">
-          <ion-nav-view name="about-tab"></ion-nav-view>
+        <ion-tab title="Inicio" icon="ion-ios-home" href="#/tab/home">
+          <ion-nav-view name="home-tab"></ion-nav-view>
         </ion-tab>
 
         <ion-tab title="Horarios" icon="ion-ios-clock" ui-sref="tabs.contact">
@@ -51,13 +51,16 @@
 
     <script id="templates/home.html" type="text/ng-template">
       <ion-view view-title="Ramales">
-        <ion-content class="padding">
+        <div class="bar bar-light bar-subheader">
+          <h2 class="title">Ramal</h2>
+        </div>
+        <ion-content class="padding has-subheader">
           <ul>
-            <li>Ramal 1</li>
-            <li>Ramal 2</li>
+            <li>Linea 1</li>
+            <li>Linea 2</li>
           </ul>
           <p>
-            <a class="button icon icon-right ion-chevron-right" href="#/tab/facts"> Lineas</a>
+            <a class="button icon icon-right ion-chevron-right" href="#/tab/facts2"> Estaciones</a>
           </p>
         </ion-content>
       </ion-view>
@@ -65,7 +68,7 @@
 
     <script id="templates/facts.html" type="text/ng-template">
       <ion-view view-title="Lineas">
-        <div class="bar bar-stable bar-subheader">
+        <div class="bar bar-light bar-subheader">
           <h2 class="title">Ramal</h2>
         </div>
         <ion-content class="padding has-subheader">
@@ -82,7 +85,7 @@
 
     <script id="templates/facts2.html" type="text/ng-template">
       <ion-view view-title="Estaciones">
-        <div class="bar bar-stable bar-subheader">
+        <div class="bar bar-light bar-subheader">
           <h2 class="title">Linea</h2>
         </div>
         <ion-content class="padding has-subheader">
@@ -99,7 +102,7 @@
 
     <script id="templates/facts3.html" type="text/ng-template">
       <ion-view view-title="Sentido">
-        <div class="bar bar-stable bar-subheader">
+        <div class="bar bar-light bar-subheader">
           <h2 class="title">Estacion</h2>
         </div>
         <ion-content class="padding has-subheader">
@@ -116,7 +119,7 @@
 
     <script id="templates/facts4.html" type="text/ng-template">
       <ion-view view-title="Horarios">
-        <div class="bar bar-stable bar-subheader">
+        <div class="bar bar-light bar-subheader">
           <h2 class="title">Estacion > Sentido</h2>
         </div>
         <ion-content class="padding has-subheader">
@@ -129,13 +132,23 @@
     </script>
 
     <script id="templates/about.html" type="text/ng-template">
-      <ion-view view-title="Favoritos">
-        <ion-content class="padding">
-          <ul>
-            <li>Favorito 1</li>
-            <li>Favorito 2</li>
-          </ul>
+      <ion-view view-title="Favoritos" show-bar="false">
+
+        <ion-nav-buttons side="left">
+          <button class="button button-icon icon" ng-class="{'ion-trash-b': behaviours.showDelete, 'ion-chevron-left': !behaviours.showDelete}" ng-click="behaviours.showDelete = !behaviours.showDelete;"></button>
+        </ion-nav-buttons>
+
+        <ion-content>
+
+          <ion-list show-delete="behaviours.showDelete">
+            <ion-item href="#/" ng-repeat="ramal in ramales" item="ramal" ng-click="probar()" class="item item item-remove-animate">
+              <ion-delete-button ng-click="deleteFavorite(ramal)" class="ion-heart assertive"></ion-delete-button>
+              {{ramal}}
+            </ion-item>
+          </ion-list>
+
         </ion-content>
+
       </ion-view>
     </script>
 
