@@ -26,6 +26,8 @@ angular.module('ConsulTren', ['ionic'])
 .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
   $ionicConfigProvider.navBar.alignTitle('center');
+  $ionicConfigProvider.spinner.icon('crescent');
+  $ionicConfigProvider.tabs.position('bottom'); // other values: top
   $ionicConfigProvider.backButton.previousTitleText(false);
   $ionicConfigProvider.backButton.icon('ion-chevron-left');
   $ionicConfigProvider.backButton.text('');
@@ -107,11 +109,21 @@ angular.module('ConsulTren', ['ionic'])
 
 })
 
-.controller('FavoritosTabCtrl', function ($scope) {
+.controller('FavoritosTabCtrl', function ($scope, $ionicLoading) {
   $scope.ramales = ['Mitre', 'San Martin', 'Urquiza', 'Roca'];
 
-  $scope.behaviours = {
-    showDelete: false
+  // $ionicLoading.show({
+  //   template: '<ion-spinner></ion-spinner>',
+  // });
+
+  $scope.states = {
+    delete: false,
+    reorder: false
+  };
+
+  $scope.moverItem = function(item, fromIndex, toIndex) {
+    $scope.ramales.splice(fromIndex, 1);
+    $scope.ramales.splice(toIndex, 0, item);
   };
 
   $scope.deleteFavorite = function(item) {

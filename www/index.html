@@ -25,14 +25,13 @@
 
     <ion-nav-view></ion-nav-view>
 
-
     <script id="templates/tabs.html" type="text/ng-template">
       <ion-nav-bar class="bar-positive">
         <ion-nav-back-button>
         </ion-nav-back-button>
       </ion-nav-bar>
 
-      <ion-tabs class="tabs-striped tabs-background-positive tabs-color-light">
+      <ion-tabs class="tabs-striped tabs-icon-top tabs-positive tabs-color-light">
 
         <ion-tab title="Favoritos" icon="ion-ios-star" href="#/tab/about">
           <ion-nav-view name="about-tab"></ion-nav-view>
@@ -51,10 +50,7 @@
 
     <script id="templates/home.html" type="text/ng-template">
       <ion-view view-title="Ramales">
-        <div class="bar bar-light bar-subheader">
-          <h2 class="title">Ramal</h2>
-        </div>
-        <ion-content class="padding has-subheader">
+        <ion-content class="padding">
           <ul>
             <li>Linea 1</li>
             <li>Linea 2</li>
@@ -135,15 +131,20 @@
       <ion-view view-title="Favoritos" show-bar="false">
 
         <ion-nav-buttons side="left">
-          <button class="button button-icon icon" ng-class="{'ion-trash-b': behaviours.showDelete, 'ion-chevron-left': !behaviours.showDelete}" ng-click="behaviours.showDelete = !behaviours.showDelete;"></button>
+          <button class="button button-icon icon" ng-class="{'ion-android-done': states.delete, 'ion-trash-b': !states.delete}" ng-click="states.delete = !states.delete;"></button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+          <button class="button button-icon icon" ng-class="{'ion-android-done': states.reorder, 'ion-navicon': !states.reorder}" ng-click="states.reorder = !states.reorder;"></button>
         </ion-nav-buttons>
 
         <ion-content>
 
-          <ion-list show-delete="behaviours.showDelete">
-            <ion-item href="#/" ng-repeat="ramal in ramales" item="ramal" ng-click="probar()" class="item item item-remove-animate">
+          <ion-list show-reorder="states.reorder" show-delete="states.delete">
+            <ion-item href="#/" ng-repeat="ramal in ramales" class="item item item-remove-animate">
               <ion-delete-button ng-click="deleteFavorite(ramal)" class="ion-heart assertive"></ion-delete-button>
               {{ramal}}
+              <ion-reorder-button class="ion-navicon" on-reorder="moverItem(ramal, $fromIndex, $toIndex)"></ion-reorder-button>
             </ion-item>
           </ion-list>
 
